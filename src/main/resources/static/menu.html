@@ -5,7 +5,7 @@
     <title>Menu</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
-<!--<style style="text/css">
+<style style="text/css">
     body {
     background-color: #A80717;
     background-image: url(https://wallpaperscraft.com/image/dough_flour_meal_tomato_pepper_bell_onion_garlic_cheese_mushrooms_butter_pizza_75375_1920x1080.jpg);
@@ -195,7 +195,7 @@
 
 
 </style>
--->
+
 <body>
 <header>
   <h1>Molveno Restaurant</h1>
@@ -274,10 +274,33 @@
 
   <a id="reservatie" class="anchor" data-anchor="reservatie"></a>
   <h3>Reservation</h3>
+    <section>
+    <br>
+        <p>Number of persons</p>
+        <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+
+
+        <P><br>Choose a time for your Reservation:</p>
+
+        <input type="datetime-local" id="meeting-time"
+               name="meeting-time" value="2018-06-12T19:30"
+               min="2018-12-20T00:00" max="2200-06-14T00:00"></br>
+               <p><br></p>
+
+    <button onclick="window.location.href='http://localhost:63342/molveno/static/reserve.html?_ijt=n3ar6hpclil8jntimqgp8bdh99'">Reserve</button>
+
+    </section>
 
   <div id="openingsuren">
-    <h4>Openings Time:</h4>
-    <p class="mon"> Every Day : 11:00 am - 01:00 am </p>
+    <h4><br>Openings Time:</h4>
+    <p class="mon">Every Day : 11:00 - 01:00 </p>
 
 	</div>
   <p>You can make a reservation online or by calling us</p>
