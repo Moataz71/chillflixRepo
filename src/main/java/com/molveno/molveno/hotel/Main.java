@@ -15,6 +15,7 @@ public class Main {
     public static void main(String[] args) {
 
 
+
         System.out.println("Welcome to the Molveno Hotel Portal!");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the Check-In Date:  (yyyy-MM-dd)");

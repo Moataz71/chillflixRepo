@@ -191,7 +191,9 @@
     height: 280px;
     margin: 2em;
     }
-
+    #Div2 {
+    display: none;
+    }
 
 
 </style>
@@ -249,6 +251,7 @@
           <tr>
             <td>snack1</td>
             <td>€ 7,00</td>
+            <td>€ 7,00</td>
           </tr>
         </table>
         <table id="tabelM3" data-id="derde">
@@ -274,10 +277,10 @@
 
   <a id="reservatie" class="anchor" data-anchor="reservatie"></a>
   <h3>Reservation</h3>
-    <section>
+    <section id="Div1">
     <br>
         <p>Number of persons</p>
-        <select>
+        <select id="nr">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -319,17 +322,75 @@ $('#time').timepicker({
     interval: 15,
     minTime: '11',
     maxTime: '23:59',
+    startTime : new Date(),
     dynamic: false,
     dropdown: true,
     scrollbar: true
 });
+      function switchVisible() {
+            if (document.getElementById('Div1')) {
+
+                if (document.getElementById('Div1').style.display == 'none') {
+                    document.getElementById('Div1').style.display = 'block';
+                    document.getElementById('Div2').style.display = 'none';
+                }
+                else {
+                    document.getElementById('Div1').style.display = 'none';
+                    document.getElementById('Div2').style.display = 'block';
+                }
+            }
+}
+      function switchVisible2() {
+            if (document.getElementById('Div2')) {
+
+                if (document.getElementById('Div2').style.display == 'none') {
+                    document.getElementById('Div2').style.display = 'block';
+                    document.getElementById('demo').style.display = 'none';
+                }
+                else {
+                    document.getElementById('Div2').style.display = 'none';
+                    document.getElementById('demo').style.display = 'block';
+                }
+            }
+        addString();
+}
+      function addString() {
+  var a = document.getElementById("1").value;
+  var b = document.getElementById("2").value;
+  var c = document.getElementById("3").value;
+  var d = document.getElementById("4").value;
+  var e = document.getElementById("time").value
+  var f = document.getElementById("datum").value;
+  var g = document.getElementById("nr").value;
+
+  var x = "We made reservation :  <br> on " +f +" at " +e + "<br>"+  "for " + g + " persons <br>" + a +" "+ b + "<br>"+ c ;
+  document.getElementById("demo").innerHTML = x;
+}
+
 </script>
 </div>
 <p><br></p>
 
-    <button onclick="window.location.href='http://localhost:63342/molveno/static/reserve.html?_ijt=n3ar6hpclil8jntimqgp8bdh99'">Reserve</button>
+    <button onclick="switchVisible();">Reserve</button>
+
 
     </section>
+  <div id="Div2">
+  First name:*<br>
+<input type="text" name="firstname" id="1"><br>
+Last name:*<br>
+<input type="text" name="lastname" id="2"><br>
+Telephone number:*<br>
+<input type="text" name="Telephone number" id="3"><br>
+Email:<br>
+<input type="email" name="Email" placeholder="Optional"id="4"></br>
+<br>
+
+      <button onclick="switchVisible2();">Submit</button>
+
+  </div>
+  <div id="demo">
+  </div>
 
   <div id="openingsuren">
     <h4><br>Openings Time:</h4>
