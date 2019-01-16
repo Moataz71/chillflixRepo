@@ -72,6 +72,9 @@
 		$('#datum').datepicker({
 		dateFormat: 'dd-mm-yy',
         minDate: new Date(),
+
+        onSelect: function(selected) {
+         updateAb(selected);}
 		});
 		</script>
     </div>
@@ -79,22 +82,63 @@
     Time <input type=text name=time id=time readonly  value=''  >
     <div class="iseeit-container">
         <script>
-$('#time').timepicker({
-    timeFormat: 'HH:mm',
-    interval: 15,
-    minTime: calcHour(),
-    maxTime: '23:59',
-    startTime : calcHour(),
-    dynamic: false,
-    dropdown: true,
-    scrollbar: true
 
-});
+function formatDate(date) {
+  var monthNames = [
+    "01", "02", "03",
+    "04", "05", "06", "07",
+    "08", "09", "10",
+    "11", "12"
+  ];
 
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+
+  return day + '-' + monthNames[monthIndex] + '-' + year;
+}
+
+function updateAb(value){
+    $('#datum').val(value);
+    $('#time').
+    var current = formatDate (new Date());
+    if(current === value){
+        alert("equal");
+        var start = calcHour();
+        start = start + "";
+        $('#time').timepicker({
+            timeFormat: 'HH:mm',
+            interval: 15,
+            minTime : start,
+            maxTime: '23:59',
+            startTime : start,
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+
+    }
+    else {
+
+        $('#time').timepicker({
+            timeFormat: 'HH:mm',
+            interval: 15,
+            minTime : '11',
+            maxTime: '23:59',
+            startTime : '11',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+
+           });
+    }
+
+
+}
 function calcHour(){
     var current = new Date();
     var minutes = current.getMinutes();
-    alert(minutes);
+  //  alert(minutes);
     //if minutes is equal or bigger than 0 and smaller than 15 it will return hours + 15
     if(minutes >= 0 && minutes < 15){
         return current.getHours() +".15";
