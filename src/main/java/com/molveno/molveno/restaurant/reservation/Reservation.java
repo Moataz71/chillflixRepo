@@ -2,14 +2,15 @@ package com.molveno.molveno.restaurant.reservation;
 
 
 import com.molveno.molveno.restaurant.guest.Guest;
-import com.molveno.molveno.restaurant.table.Table;
+import com.molveno.molveno.restaurant.table.Tablee;
+
 import java.time.LocalDateTime;
 
 public class Reservation {
     private long id;
     private LocalDateTime ReservationsTime;
     private Guest guest;
-    private Table table;
+    private Tablee table;
 
 
     public LocalDateTime getReservationsTime() {
@@ -38,11 +39,11 @@ public class Reservation {
         this.guest = guest;
     }
 
-    public Table getTable() {
+    public Tablee getTable() {
         return table;
     }
 
-    public void setTable(Table table) {
+    public void setTable(Tablee table) {
         this.table = table;
     }
 }

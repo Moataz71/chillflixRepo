@@ -1,8 +1,14 @@
 package com.molveno.molveno.restaurant;
 
 
+import com.molveno.molveno.restaurant.guest.Guest;
+import com.molveno.molveno.restaurant.menu.*;
+import com.molveno.molveno.restaurant.order.Order;
+import com.molveno.molveno.restaurant.order.OrderLogic;
 import com.molveno.molveno.restaurant.reservation.*;
-import com.molveno.molveno.restaurant.table.Table;
+import com.molveno.molveno.restaurant.table.Tablee;
+import com.molveno.molveno.general.*;
+
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,19 +16,20 @@ import java.time.LocalTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-       /* Dish dish1 = new Dish();
+        Dish dish1 = new Dish();
         Ingredient ingredients1 = new Ingredient();
         Comstumization comstumization1 = new Comstumization();
         Order order = new Order();
 
 
-       System.out.println("Welcome to Molveno Restaurant");
+        System.out.println("Welcome to Molveno Restaurant");
         Reservation reservation1 = new Reservation();
         Guest geust1 = new Guest();
-       // Table table11 = new Table();
+        Tablee table11 = new Tablee();
         Scanner sc = new Scanner(System.in);
         System.out.println("What is your name?");
         String x = sc.nextLine();
@@ -37,7 +44,6 @@ public class Main {
         do {
             System.out.println("What is your email address?");
             email = sc.nextLine();
-
         }
         while (!Validation.isValidEmail(email));
 
@@ -46,8 +52,8 @@ public class Main {
         Scanner sc2 = new Scanner(System.in);
 
         int z;
-Ingredient ingredient2 = new Ingredient();
-ingredient2.setPriceIngredients(10);
+        Ingredient ingredient2 = new Ingredient();
+        ingredient2.setPriceIngredients(10);
 
         comstumization1.setEffortPrice(3);
         ingredients1.setPriceIngredients(50);
@@ -74,7 +80,7 @@ ingredient2.setPriceIngredients(10);
 
         System.out.println(OrderLogic.calculateTotalprice(order));
 
-*/
+
         LocalDate date = LocalDate.of(2018, Month.DECEMBER, 05);
 
 
@@ -100,79 +106,77 @@ ingredient2.setPriceIngredients(10);
         List<LocalDateTime> current = new ArrayList<>();
         current.add(Reservation1);
         current.add(Reservation2);
-       // System.out.println("current is  " + current);
+        // System.out.println("current is  " + current);
 
         //System.out.println(ReservationLogic.checkDateTime(ReservationRequest, current));
 
-        Table table1 = new Table();
+        Tablee table1 = new Tablee();
         table1.setId(1);
         table1.setNumberOfChairs(4);
-        Table table2 = new Table();
+        Tablee table2 = new Tablee();
         table2.setId(2);
         table2.setNumberOfChairs(6);
-        Table table4 = new Table();
+        Tablee table4 = new Tablee();
         table4.setId(4);
         table4.setNumberOfChairs(8);
-        Table table3 = new Table();
+        Tablee table3 = new Tablee();
         table3.setId(3);
         table3.setNumberOfChairs(8);
         //boolean timeAvailable = ReservationLogic.checkDateTime(ReservationRequest, current);
 
-        List<Table> tables = new ArrayList<>();
+        List<Tablee> tables = new ArrayList<>();
         tables.add(table1);
         tables.add(table2);
         tables.add(table3);
         tables.add(table4);
 
 
-        Reservation rese1= new Reservation();
+        Reservation rese1 = new Reservation();
         rese1.setTable(table1);
         rese1.setReservationsTime(Reservation1);
 
-        Reservation rese2= new Reservation();
+        Reservation rese2 = new Reservation();
         rese2.setTable(table2);
         rese2.setReservationsTime(Reservation2);
         List<Reservation> listReservations = new ArrayList<>();
 
         listReservations.add(rese1);
         listReservations.add(rese2);
-Reservation reservation3 = new Reservation();
-
+        Reservation reservation3 = new Reservation();
 
 
         //System.out.println(ReservationLogic.getAvailableTables(ReservationRequest,tables,listReservations));
         //System.out.println(listReservations);
 
 
-       // System.out.println(listReservations);
-        ReservationLogic.doReserve(ReservationRequest,tables,listReservations,reservation3);
+        // System.out.println(listReservations);
+        ReservationLogic.doReserve(ReservationRequest, tables, listReservations, reservation3);
         //System.out.println(listReservations);
-        System.out.println(ReservationLogic.getAvailableTables(ReservationRequest,tables,listReservations));
+        System.out.println(ReservationLogic.getAvailableTables(ReservationRequest, tables, listReservations));
 
-ReservationLogic.cancel(reservation3,listReservations);
-     //   ReservationLogic.cancel(rese1,listReservations);
-       // ReservationLogic.cancel(rese2,listReservations);
-     //   ReservationLogic.cancel(r,listReservations);
-
+        ReservationLogic.cancel(reservation3, listReservations);
+        //   ReservationLogic.cancel(rese1,listReservations);
+        // ReservationLogic.cancel(rese2,listReservations);
+        //   ReservationLogic.cancel(r,listReservations);
 
 
         //System.out.println((listReservations));
 
-    //    System.out.println(reservation3.getTable().getId());
-      //  System.out.println(reservation3.getReservationsTime());
+        //    System.out.println(reservation3.getTable().getId());
+        //  System.out.println(reservation3.getReservationsTime());
         //System.out.println(rese2.getTable().getId());
         //System.out.println(rese2.getReservationsTime());
         //System.out.println(rese1.getTable().getId());
         //System.out.println(rese1.getReservationsTime());
 
-  //      LocalDate date4 = LocalDate.of(2018, Month.DECEMBER, 05);
+        //      LocalDate date4 = LocalDate.of(2018, Month.DECEMBER, 05);
 
 
 //        LocalTime time4 = LocalTime.of(13, 0);
 
-      //  LocalDateTime ReservationRequest2 = LocalDateTime.of(date4, time4);
-       //System.out.println( ReservationLogic.getAvailableTables(ReservationRequest2,tables,listReservations).toString());
-System.out.println(ReservationLogic.getAvailableTables(ReservationRequest,tables,listReservations));
+        //  LocalDateTime ReservationRequest2 = LocalDateTime.of(date4, time4);
+        //System.out.println( ReservationLogic.getAvailableTables(ReservationRequest2,tables,listReservations).toString());
+        System.out.println(ReservationLogic.getAvailableTables(ReservationRequest, tables, listReservations));
 
 
     }
