@@ -82,13 +82,39 @@
 $('#time').timepicker({
     timeFormat: 'HH:mm',
     interval: 15,
-    minTime: '11',
+    minTime: calcHour(),
     maxTime: '23:59',
-    startTime : new Date(),
+    startTime : calcHour(),
     dynamic: false,
     dropdown: true,
     scrollbar: true
+
 });
+
+function calcHour(){
+    var current = new Date();
+    var minutes = current.getMinutes();
+    alert(minutes);
+    //if minutes is equal or bigger than 0 and smaller than 15 it will return hours + 15
+    if(minutes >= 0 && minutes < 15){
+        return current.getHours() +".15";
+    }
+    //if minutes is equal or bigger than 15 and smaller than 30 it will return hours + 30
+    else if(minutes >= 15 && minutes < 30){
+        return current.getHours() +".30";
+
+    }
+    //if minutes is equal or bigger than 30 and smaller than 45 it will return hours + 45
+    else if (minutes >= 30 && minutes < 45) {
+        return current.getHours() +".45";
+
+    }
+    // else will return hours + 00
+    else {
+        return (current.getHours()+1)+".00";
+    }
+    }
+
       function switchVisible() {
             if (document.getElementById('Div1')) {
 
