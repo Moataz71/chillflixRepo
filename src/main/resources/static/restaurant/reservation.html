@@ -100,12 +100,12 @@ function formatDate(date) {
 
 function updateAb(value){
     $('#datum').val(value);
-    $('#time').
+
     var current = formatDate (new Date());
     if(current === value){
         alert("equal");
         var start = calcHour();
-        start = start + "";
+        start = start;
         $('#time').timepicker({
             timeFormat: 'HH:mm',
             interval: 15,
