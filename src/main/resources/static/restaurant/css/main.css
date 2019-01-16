@@ -4,6 +4,34 @@
     font: 1rem 'Fira Sans', sans-serif;
 }
 
+.link{
+    font: 1.2rem 'Fira Sans', sans-serif;
+
+}
+
+    a:hover{
+    color: #5BC0BE;
+    font-weight: 600;
+    }
+
+
+h3 {
+padding-left: 3%;
+margin-bottom:2%;
+}
+
+
+#openTime{
+font-size:70px;
+float:right;
+margin-right: 20%;
+
+}
+
+#food{
+padding-left: 3%;
+}
+
 .tm-header{
     background: #fff;
     display: block;
@@ -874,7 +902,7 @@ body {
     }
 
     #menukader a, #wijnkader a {
-    font-size: .8em;
+
     font-weight: 600;
     }
 
