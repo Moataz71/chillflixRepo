@@ -4,7 +4,7 @@ import com.molveno.molveno.restaurant.guest.Guest;
 import com.molveno.molveno.restaurant.menu.Comstumization;
 import com.molveno.molveno.restaurant.menu.Dish;
 import com.molveno.molveno.restaurant.menu.Drink;
-import com.molveno.molveno.restaurant.table.Table;
+import com.molveno.molveno.restaurant.table.Tablee;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class Order {
     private List<Dish> dishes;
     private List<Drink> drinks;
     private double totalPrice;
-    private Table table;
+    private Tablee table;
     private Guest guest;
     private List<Comstumization> comstumizations;
 
@@ -58,11 +58,11 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-    public Table getTable() {
+    public Tablee getTable() {
         return table;
     }
 
-    public void setTable(Table table) {
+    public void setTable(Tablee table) {
         this.table = table;
     }
 

@@ -2,10 +2,7 @@ package com.molveno.molveno.restaurant.bill;
 
 import com.molveno.molveno.restaurant.guest.Guest;
 import com.molveno.molveno.restaurant.order.Order;
-import com.molveno.molveno.restaurant.menu.Dish;
-import com.molveno.molveno.restaurant.menu.Drink;
-import com.molveno.molveno.restaurant.table.Table;
-import com.molveno.molveno.restaurant.menu.Comstumization;
+
 import java.time.LocalDateTime;
 
 public class Bill {

@@ -3,8 +3,8 @@ package com.molveno.molveno.restaurant.reservation;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import com.molveno.molveno.restaurant.guest.Guest;
-import com.molveno.molveno.restaurant.table.Table;
+
+import com.molveno.molveno.restaurant.table.Tablee;
 
 public class ReservationLogic {
     /**
@@ -17,7 +17,7 @@ public class ReservationLogic {
      */
 
 
-    public static boolean checkDateTime(LocalDateTime reservationRequest, List<Reservation> currentReservations, Table table) {
+    public static boolean checkDateTime(LocalDateTime reservationRequest, List<Reservation> currentReservations, Tablee table) {
         long tableId = table.getId();
 
         LocalDateTime min = reservationRequest.minusHours(3);
@@ -44,9 +44,9 @@ public class ReservationLogic {
      * @param reservations
      * @return
      */
-    public static List<Table> getAvailableTables(LocalDateTime reservationRequest, List<Table> tables, List<Reservation> reservations) {
-        List<Table> availableTables = new ArrayList<>();
-        for (Table table : tables) {
+    public static List<Tablee> getAvailableTables(LocalDateTime reservationRequest, List<Tablee> tables, List<Reservation> reservations) {
+        List<Tablee> availableTables = new ArrayList<>();
+        for (Tablee table : tables) {
             if (checkDateTime(reservationRequest, reservations, table)) {
                 availableTables.add(table);
 
@@ -60,7 +60,7 @@ public class ReservationLogic {
     }
 
 
-    public static void doReserve(LocalDateTime reservationRequest,List<Table> tables,List<Reservation> reservations,Reservation reservation){
+    public static void doReserve(LocalDateTime reservationRequest, List<Tablee> tables, List<Reservation> reservations, Reservation reservation){
         int i=0;
         if((getAvailableTables(reservationRequest,tables,reservations )!=null)) {
 

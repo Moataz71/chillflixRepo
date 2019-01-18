@@ -4,7 +4,6 @@ import com.molveno.molveno.restaurant.guest.Guest;
 import com.molveno.molveno.restaurant.order.Order;
 import com.molveno.molveno.restaurant.menu.Dish;
 import com.molveno.molveno.restaurant.menu.Drink;
-import com.molveno.molveno.restaurant.table.Table;
 import com.molveno.molveno.restaurant.menu.Comstumization;
 
 
@@ -34,9 +33,15 @@ public class BillController {
         for (Drink d : order.getDrinks()) {
             total = total + d.getPrice();
         }
-        for (Comstumization c : order.getComstumizations()) {
-            total = total + c.getCostumizationPrice();
+
+
+        if(order.getComstumizations().size()>0)
+        {
+            for (Comstumization c : order.getComstumizations()) {
+                total = total + c.getCostumizationPrice();
+            }
         }
+
 
 
         return total;
