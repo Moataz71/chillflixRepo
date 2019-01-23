@@ -16,6 +16,33 @@
 
     <script type="text/javascript" src="dist/demo.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script>
+        function makeReservation(){
+
+       var datum = $("#datum").val();
+       var time = $("#time").val();
+var dateTime=datum+ "T" +time + ":00";
+
+       var obj={
+"reservationTime" : dateTime
+
+       }
+var jsonObject=JSON.stringify(obj);
+$.ajax({
+url:"http://localhost:8080/save-reservation",
+type:"post",
+success:alert(jsonObject),
+data: jsonObject,
+contentType:"application/json;",
+      dataType: "application/json"
+})
+
+
+}
+
+    </script>
+
+
 </head>
 <body>
 <header class="tm-header">
@@ -77,7 +104,7 @@
     <div class="iseeit-container">
         <script>
 		$('#datum').datepicker({
-		dateFormat: 'dd-mm-yy',
+		dateFormat: 'yy-mm-dd',
         minDate: new Date(),
 
         onSelect: function(selected) {
@@ -211,7 +238,7 @@ function calcHour(){
     </div>
     <p><br></p>
 
-    <button onclick="switchVisible();">Reserve</button>
+    <button onclick="switchVisible();makeReservation()">Reserve</button>
 
 
 </section>
