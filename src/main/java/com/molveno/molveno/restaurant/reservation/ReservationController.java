@@ -26,6 +26,10 @@ public class ReservationController {
 
     @RequestMapping(value = "/save-reservation", method = RequestMethod.POST , consumes="application/json")
     public void saveReservation(@RequestBody Reservation reservation) {
+
+        System.out.println(reservation.getReservationTime());
+
+
         reservationRepository.save(reservation);
     }
 
