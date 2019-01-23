@@ -110,7 +110,7 @@ function updateAb(value){
 
     var current = formatDate (new Date());
     if(current === value){
-        alert("equal");
+        //alert("equal");
         var start = calcHour();
         start = start;
         $('#time').timepicker({
@@ -201,8 +201,9 @@ function calcHour(){
   var e = document.getElementById("time").value
   var f = document.getElementById("datum").value;
   var g = document.getElementById("nr").value;
+  var h = document.getElementById("data301").value;
 
-  var x = "We made reservation :  <br> on " +f +" at " +e + "<br>"+  "for " + g + " persons <br>" + a +" "+ b + "<br>"+ c ;
+  var x = "We made reservation :  <br> on " +f +" at " +e + "<br>"+  "for " + g + " persons <br>" + " on table number " + h + "<br>"+ a +" "+ b + "<br>"+ c ;
   document.getElementById("demo").innerHTML = x;
 }
 
