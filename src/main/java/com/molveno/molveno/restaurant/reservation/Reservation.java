@@ -16,8 +16,9 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Access(AccessType.PROPERTY)
     private long id;
+
     @Column(name = "reservationtime")
-    private LocalDateTime ReservationTime;
+    private LocalDateTime reservationTime;
 
     @JoinColumn(name = "guestid", referencedColumnName = "id")
     @ManyToOne
@@ -31,11 +32,11 @@ public class Reservation {
 
     @Column
     public LocalDateTime getReservationTime() {
-        return ReservationTime;
+        return reservationTime;
     }
 
     public void setReservationTime(LocalDateTime reservationTime) {
-        ReservationTime = reservationTime;
+        this.reservationTime = reservationTime;
     }
 
 
