@@ -4,21 +4,38 @@ package com.molveno.molveno.restaurant.reservation;
 import com.molveno.molveno.restaurant.guest.Guest;
 import com.molveno.molveno.restaurant.table.Tablee;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "Reservation")
+
 public class Reservation {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Access(AccessType.PROPERTY)
     private long id;
-    private LocalDateTime ReservationsTime;
+    @Column(name = "reservationtime")
+    private LocalDateTime ReservationTime;
+
+    @JoinColumn(name = "guestid", referencedColumnName = "id")
+    @ManyToOne
+    // many reservation to one guest
     private Guest guest;
+
+    @JoinColumn(name = "tableeid", referencedColumnName = "id")
+    @ManyToOne
+    // many reservation to one table
     private Tablee table;
 
-
-    public LocalDateTime getReservationsTime() {
-        return ReservationsTime;
+    @Column
+    public LocalDateTime getReservationTime() {
+        return ReservationTime;
     }
 
-    public void setReservationsTime(LocalDateTime reservationsTime) {
-        ReservationsTime = reservationsTime;
+    public void setReservationTime(LocalDateTime reservationTime) {
+        ReservationTime = reservationTime;
     }
 
 

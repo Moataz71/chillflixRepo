@@ -1,9 +1,22 @@
 package com.molveno.molveno.restaurant.guest;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Guest {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Access(AccessType.PROPERTY)
     private long id;
+
+    @Column
     private String name;
+
+    @Column (name="mobilenumber")
     private String mobileNumber;
+
+    @Column
     private String email;
 
     public long getId() {

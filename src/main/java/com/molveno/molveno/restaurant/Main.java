@@ -133,11 +133,11 @@ public class Main {
 
         Reservation rese1 = new Reservation();
         rese1.setTable(table1);
-        rese1.setReservationsTime(Reservation1);
+        rese1.setReservationTime(Reservation1);
 
         Reservation rese2 = new Reservation();
         rese2.setTable(table2);
-        rese2.setReservationsTime(Reservation2);
+        rese2.setReservationTime(Reservation2);
         List<Reservation> listReservations = new ArrayList<>();
 
         listReservations.add(rese1);
@@ -163,11 +163,11 @@ public class Main {
         //System.out.println((listReservations));
 
         //    System.out.println(reservation3.getTable().getId());
-        //  System.out.println(reservation3.getReservationsTime());
+        //  System.out.println(reservation3.getReservationTime());
         //System.out.println(rese2.getTable().getId());
-        //System.out.println(rese2.getReservationsTime());
+        //System.out.println(rese2.getReservationTime());
         //System.out.println(rese1.getTable().getId());
-        //System.out.println(rese1.getReservationsTime());
+        //System.out.println(rese1.getReservationTime());
 
         //      LocalDate date4 = LocalDate.of(2018, Month.DECEMBER, 05);
 
