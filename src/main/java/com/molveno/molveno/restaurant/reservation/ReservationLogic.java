@@ -27,7 +27,7 @@ public class ReservationLogic {
             if (current.getTable().getId() != tableId) {
                 continue;
             }
-            if (current.getReservationsTime().isBefore(max) && current.getReservationsTime().isAfter(min)) {
+            if (current.getReservationTime().isBefore(max) && current.getReservationTime().isAfter(min)) {
                 return false;
             }
         }
@@ -65,7 +65,7 @@ public class ReservationLogic {
         if((getAvailableTables(reservationRequest,tables,reservations )!=null)) {
 
             reservation.setTable(getAvailableTables(reservationRequest, tables, reservations).get(i));
-            reservation.setReservationsTime(reservationRequest);
+            reservation.setReservationTime(reservationRequest);
             getAvailableTables(reservationRequest, tables, reservations).remove(i);
             reservations.add(reservation);
         }
