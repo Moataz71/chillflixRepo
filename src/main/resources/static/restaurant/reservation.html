@@ -21,7 +21,16 @@
 
        var datum = $("#datum").val();
        var time = $("#time").val();
-var dateTime=datum+ "T" +time + ":00";
+       var datum1= String(datum);
+  var datum2= datum1.substring(0,2);
+  var datum3= datum1.substring(6,10);
+  var datum4=datum1.substring(2,6);
+  var datum5=datum3+datum4+datum2;
+
+console.log(datum5);
+
+var dateTime=datum5+ "T" +time + ":00";
+//yy-mm-dd
 
        var obj={
 "reservationTime" : dateTime
@@ -31,11 +40,46 @@ var jsonObject=JSON.stringify(obj);
 $.ajax({
 url:"http://localhost:8080/save-reservation",
 type:"post",
-success:alert(jsonObject),
 data: jsonObject,
 contentType:"application/json;",
       dataType: "application/json"
 })
+
+
+}
+
+function checkTime(){
+var datum = $("#datum").val();
+       var time = $("#time").val();
+       var datum1= String(datum);
+  var datum2= datum1.substring(0,2);
+  var datum3= datum1.substring(6,10);
+  var datum4=datum1.substring(2,6);
+  var datum5=datum3+datum4+datum2;
+
+var dateTime=datum5+ "T" +time + ":00";
+
+var obj={
+"reservationTime" : dateTime
+
+       }
+var jsonObject=JSON.stringify(obj);
+$.ajax({
+url:"http://localhost:8080/compare-time",
+type:"post",
+data: jsonObject,
+contentType:"application/json;",
+      dataType: "application/json"
+
+
+
+
+
+
+
+})
+
+
 
 
 }
@@ -104,7 +148,7 @@ contentType:"application/json;",
     <div class="iseeit-container">
         <script>
 		$('#datum').datepicker({
-		dateFormat: 'yy-mm-dd',
+		dateFormat: 'dd-mm-yy',
         minDate: new Date(),
 
         onSelect: function(selected) {
@@ -238,7 +282,7 @@ function calcHour(){
     </div>
     <p><br></p>
 
-    <button onclick="switchVisible();makeReservation()">Reserve</button>
+    <button onclick="switchVisible();checkTime()">Reserve</button>
 
 
 </section>
@@ -256,7 +300,7 @@ function calcHour(){
     <input type="email" name="Email" placeholder="Optional"id="4"></br>
     <br>
     </P>
-    <button onclick="switchVisible2();">Submit</button>
+    <button onclick="switchVisible2();makeReservation()">Submit</button>
 
     <script type="text/javascript">
 

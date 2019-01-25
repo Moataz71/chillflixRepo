@@ -20,17 +20,29 @@ public class Reservation {
     @Column(name = "reservationtime")
     private LocalDateTime reservationTime;
 
-    @JoinColumn(name = "guestid", referencedColumnName = "id")
-    @ManyToOne
+
+
     // many reservation to one guest
+    //@Column(name = "guestid")
+    //private long guestId;
+
+    //@Column(name = "tableid")
+    // many reservation to one table
+    //private long tableId;
+
+    @JoinColumn(name="tableid",referencedColumnName = "id")
+    @ManyToOne
+    private Tablee tablee;
+
+    @JoinColumn(name="guestid",referencedColumnName = "id")
+    @ManyToOne
     private Guest guest;
 
-    @JoinColumn(name = "tableeid", referencedColumnName = "id")
-    @ManyToOne
-    // many reservation to one table
-    private Tablee table;
 
-    @Column
+
+
+
+
     public LocalDateTime getReservationTime() {
         return reservationTime;
     }
@@ -48,6 +60,13 @@ public class Reservation {
         this.id = id;
     }
 
+    public Tablee getTablee() {
+        return tablee;
+    }
+
+    public void setTablee(Tablee tablee) {
+        this.tablee = tablee;
+    }
 
     public Guest getGuest() {
         return guest;
@@ -57,11 +76,21 @@ public class Reservation {
         this.guest = guest;
     }
 
-    public Tablee getTable() {
-        return table;
+
+    /*public long getGuestId() {
+        return guestId;
     }
 
-    public void setTable(Tablee table) {
-        this.table = table;
+    public void setGuestId(long guestId) {
+        this.guestId = guestId;
     }
+
+    public long getTableId() {
+        return tableId;
+    }
+
+    public void setTableId(long tableId) {
+        this.tableId = tableId;
+    }
+    */
 }

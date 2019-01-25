@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.molveno.molveno.restaurant.table.Tablee;
+import org.springframework.stereotype.Component;
+
 
 public class ReservationLogic {
     /**
@@ -24,7 +26,7 @@ public class ReservationLogic {
         LocalDateTime max = reservationRequest.plusHours(3);
 
         for (Reservation current : currentReservations) {
-            if (current.getTable().getId() != tableId) {
+            if (current.getTablee().getId() != tableId) {
                 continue;
             }
             if (current.getReservationTime().isBefore(max) && current.getReservationTime().isAfter(min)) {
@@ -64,7 +66,7 @@ public class ReservationLogic {
         int i=0;
         if((getAvailableTables(reservationRequest,tables,reservations )!=null)) {
 
-            reservation.setTable(getAvailableTables(reservationRequest, tables, reservations).get(i));
+            reservation.setTablee(getAvailableTables(reservationRequest, tables, reservations).get(i));
             reservation.setReservationTime(reservationRequest);
             getAvailableTables(reservationRequest, tables, reservations).remove(i);
             reservations.add(reservation);
