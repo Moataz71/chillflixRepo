@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Iterator;
 import java.util.List;
 
 @RestController
@@ -27,7 +28,7 @@ public class ReservationController {
     @RequestMapping(value = "/save-reservation", method = RequestMethod.POST , consumes="application/json")
     public void saveReservation(@RequestBody Reservation reservation) {
 
-        System.out.println(reservation.getReservationTime());
+
 
 
         reservationRepository.save(reservation);
