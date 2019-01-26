@@ -1,13 +1,11 @@
 package com.molveno.molveno.restaurant.reservation;
 
 
+import com.molveno.molveno.restaurant.guest.GuestRepository;
 import com.molveno.molveno.restaurant.table.TableRepository;
 import com.molveno.molveno.restaurant.table.Tablee;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,6 +23,8 @@ public class ReservationController {
     private ReservationRepository reservationRepository;
     @Autowired
     private TableRepository tableRepository;
+    @Autowired
+    private GuestRepository guestRepository;
 
 
     @RequestMapping(value = "/get-reservation", method = RequestMethod.GET)
@@ -32,42 +32,61 @@ public class ReservationController {
         return reservationRepository.findAll();
     }
 
-    @RequestMapping(value = "/save-reservation", method = RequestMethod.POST , consumes="application/json")
+    @RequestMapping(value = "/save-reservation", method = RequestMethod.POST, consumes = "application/json")
     public void saveReservation(@RequestBody Reservation reservation) {
-
-
-
 
 
         reservationRepository.save(reservation);
     }
 
-    @RequestMapping(value = "/delete-reservation", method = RequestMethod.DELETE , consumes="application/json")
-    public void deleteReservation(@RequestBody Reservation reservation){
+    @RequestMapping(value = "/delete-reservation", method = RequestMethod.DELETE, consumes = "application/json")
+    public void deleteReservation(@RequestBody Reservation reservation) {
         reservationRepository.deleteById(reservation.getId());
 
     }
-@RequestMapping(value = "/compare-time",method =RequestMethod.POST,consumes = "application/json")
-    public List<Tablee> checkAva(@RequestBody Reservation reservation){
 
-List<Tablee> tablees = getAvailableTables(reservation.getReservationTime(),tableRepository.findAll(),reservationRepository.findAll());
-int i=0;
-if(tablees!=null&i<tablees.size()) {
-    reservation.setTablee(tablees.get(i));
-    reservationRepository.save(reservation);
-}
+    @RequestMapping(value = "/compare-time", method = RequestMethod.POST, consumes = "application/json")
+    public List<Tablee> checkAva(@RequestBody Reservation reservation) {
 
-return tablees;
-}
-    @RequestMapping(value = "/do-reserve",method =RequestMethod.POST,consumes = "application/json")
-    public List<Tablee> reserve(@RequestBody Reservation reservation){
+        List<Tablee> tablees = getAvailableTables(reservation.getReservationTime(), tableRepository.findAll(), reservationRepository.findAll());
 
-        List<Tablee> tablees = getAvailableTables(reservation.getReservationTime(),tableRepository.findAll(),reservationRepository.findAll());
-
-        if(tablees!=null) {
-            reservation.setTablee(tablees.get(0));
-reservationRepository.save(reservation);
+//if(tablees!=null&i<tablees.size()) {
+        //  reservation.setTablee(tablees.get(i));
+//}
+        if (0 < tablees.size()) {
+            for (Tablee tablee : tablees) {
+                if (tablee.getNumberOfChairs() >= reservation.getNumberOfpoeple()) {
+                    reservation.setTablee(tablee);
+                    break;
+                }
+            }
         }
+
+
+        return tablees;
+    }
+
+    @RequestMapping(value = "/do-reserve", method = RequestMethod.POST, consumes = "application/json")
+    public List<Tablee> reserve(@RequestBody Reservation reservation) {
+
+        List<Tablee> tablees = getAvailableTables(reservation.getReservationTime(), tableRepository.findAll(), reservationRepository.findAll());
+       // int i = 0;
+        //if (tablees != null & i < tablees.size()) {
+          //  reservation.setTablee(tablees.get(i));
+            //reservationRepository.save(reservation);
+        //}
+        if (0 < tablees.size()) {
+            for (Tablee tablee : tablees) {
+                if (tablee.getNumberOfChairs() >= reservation.getNumberOfpoeple()) {
+                    reservation.setTablee(tablee);
+                    break;
+                }
+            }
+        }
+        reservationRepository.save(reservation);
+
+
+
 
         return tablees;
     }

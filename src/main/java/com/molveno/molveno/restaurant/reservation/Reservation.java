@@ -32,16 +32,23 @@ public class Reservation {
 
     @JoinColumn(name="tableid",referencedColumnName = "id")
     @ManyToOne
+
     private Tablee tablee;
 
     @JoinColumn(name="guestid",referencedColumnName = "id")
     @ManyToOne
+
     private Guest guest;
+@Column(name = "numberofpople")
+    private int numberOfPoeple;
 
+    public int getNumberOfpoeple() {
+        return numberOfPoeple;
+    }
 
-
-
-
+    public void setNumberOfpoeple(int numberOfpoeple) {
+        this.numberOfPoeple = numberOfpoeple;
+    }
 
     public LocalDateTime getReservationTime() {
         return reservationTime;

@@ -31,18 +31,20 @@ console.log(datum5);
 
 var dateTime=datum5+ "T" +time + ":00";
 //yy-mm-dd
-
+var numberOfpoeple = $("#nr option:selected").val();
        var obj={
-"reservationTime" : dateTime
+"reservationTime" : dateTime,
+"numberOfpoeple":numberOfpoeple
 
        }
 var jsonObject=JSON.stringify(obj);
 $.ajax({
-url:"http://localhost:8080/save-reservation",
+url:"http://localhost:8080/do-reserve",
 type:"post",
 data: jsonObject,
 contentType:"application/json;",
       dataType: "application/json"
+
 })
 
 
@@ -58,10 +60,10 @@ var datum = $("#datum").val();
   var datum5=datum3+datum4+datum2;
 
 var dateTime=datum5+ "T" +time + ":00";
-
+var numberOfpoeple = $("#nr option:selected").val();
 var obj={
-"reservationTime" : dateTime
-
+"reservationTime" : dateTime,
+"numberOfpoeple":numberOfpoeple
        }
 var jsonObject=JSON.stringify(obj);
 $.ajax({
@@ -287,8 +289,7 @@ function calcHour(){
 </section>
 
 <div id="Div2">
-    <p>Select table</p><select id="data301"></select>
-    <P>
+    <p>
     First name:*<br>
     <input type="text" name="firstname" id="1"><br>
     Last name:*<br>
@@ -303,37 +304,6 @@ function calcHour(){
 
     <script type="text/javascript">
 
-$(document).ready(function(){
-    console.log("getting the data...");
-
-    $("#hoi").click(function hoi() {
-        alert("it works");
-        });
-
-    $.ajax({
-        url: "/catch",
-        type: "get",
-        success: function (data) {
-                $.each(data,function(i,obj)
-                {
-                // alert(obj.id+":"+obj.nameoftable);
-                 var div_data="<option value="+obj.id+">"+obj.nameoftable+"</option>";
-               // alert(div_data);
-                $(div_data).appendTo('#data301');
-                });
-                }
-    });
-
-    $("#form").submit(function(){
-         alert("Submitted");
-          $.ajax({
-              type: "POST",
-              url: "http://localhost:8080/save",
-              data: $("#form").serialize(),
-              success: alert("success")
-    });
-});
-})
 
 
 
