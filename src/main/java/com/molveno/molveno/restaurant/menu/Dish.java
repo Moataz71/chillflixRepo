@@ -8,8 +8,7 @@ public class Dish {
     private double dishPrice;
     // create an array of ingredients
     private List<Ingredient> ingredients;
-
-
+    
     public double getDishPrice() {
         return dishPrice;
     }
