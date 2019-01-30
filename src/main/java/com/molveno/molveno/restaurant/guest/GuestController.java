@@ -14,10 +14,6 @@ import java.util.List;
 @RestController
 public class GuestController {
     @Autowired
-    private ReservationRepository reservationRepository;
-    @Autowired
-    private TableRepository tableRepository;
-    @Autowired
     private GuestRepository guestRepository;
 
     @RequestMapping(value = "/get-guest", method = RequestMethod.GET)

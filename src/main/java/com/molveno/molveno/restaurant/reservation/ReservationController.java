@@ -7,11 +7,9 @@ import com.molveno.molveno.restaurant.table.Tablee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
-import static com.molveno.molveno.restaurant.reservation.ReservationLogic.doReserve;
+
 import static com.molveno.molveno.restaurant.reservation.ReservationLogic.getAvailableTables;
 
 @RestController
@@ -45,6 +43,7 @@ public class ReservationController {
 
     }
 
+    /*
     @RequestMapping(value = "/compare-time", method = RequestMethod.POST, consumes = "application/json")
     public List<Tablee> checkAva(@RequestBody Reservation reservation) {
 
@@ -66,30 +65,138 @@ public class ReservationController {
         return tablees;
     }
 
-    @RequestMapping(value = "/do-reserve", method = RequestMethod.POST, consumes = "application/json")
-    public List<Tablee> reserve(@RequestBody Reservation reservation) {
 
+
+
+    @RequestMapping(value = "/test1", method = RequestMethod.POST, consumes = "application/json")
+    public List<Tablee> test1(@RequestBody Reservation reservation) {
         List<Tablee> tablees = getAvailableTables(reservation.getReservationTime(), tableRepository.findAll(), reservationRepository.findAll());
-       // int i = 0;
+        // int i = 0;
         //if (tablees != null & i < tablees.size()) {
-          //  reservation.setTablee(tablees.get(i));
-            //reservationRepository.save(reservation);
+        //  reservation.setTablee(tablees.get(i));
+        //reservationRepository.save(reservation);
         //}
+
         if (0 < tablees.size()) {
             for (Tablee tablee : tablees) {
                 if (tablee.getNumberOfChairs() >= reservation.getNumberOfpoeple()) {
                     reservation.setTablee(tablee);
                     break;
                 }
+
+
             }
+            reservation.setGuest(guestRepository.save(reservation.getGuest()));
+            reservationRepository.save(reservation);
         }
-        reservationRepository.save(reservation);
+
+
 
 
 
 
         return tablees;
     }
+
+
+
+
+
+
+*/
+
+    @RequestMapping(value = "/compare-time", method = RequestMethod.POST, consumes = "application/json")
+    public List<Tablee> checkAva(@RequestBody Reservation reservation) {
+
+        List<Tablee> tablees = getAvailableTables(reservation.getReservationTime(), tableRepository.findAll(), reservationRepository.findAll());
+
+//if(tablees!=null&i<tablees.size()) {
+        //  reservation.setTablee(tablees.get(i));
+//}
+      if (0 < tablees.size()) {
+            for (Tablee tablee : tablees) {
+                if (tablee.getNumberOfChairs() >= reservation.getNumberOfpoeple()) {
+                    List<Tablee> s = new ArrayList<>();
+                    s.add(tablee);
+                    reservation.setTablees(s);
+                    break;
+                }
+            }
+        }
+
+
+        return tablees;
+    }
+
+
+
+
+    @RequestMapping(value = "/test1", method = RequestMethod.POST, consumes = "application/json")
+    public List<Tablee> test1(@RequestBody Reservation reservation) {
+        List<Tablee> tablees = getAvailableTables(reservation.getReservationTime(), tableRepository.findAll(), reservationRepository.findAll());
+        // int i = 0;
+        //if (tablees != null & i < tablees.size()) {
+        //  reservation.setTablee(tablees.get(i));
+        //reservationRepository.save(reservation);
+        //}
+        int x=0;
+        int i=reservation.getNumberOfpoeple();
+ List<Tablee> s= new ArrayList<>();
+
+        if (0 < tablees.size()) {
+            for (Tablee tablee : tablees) {
+                if (tablee.getNumberOfChairs() == i) {
+                    s.add(tablee);
+                    reservation.setTablees(s);
+                    reservation.setGuest(guestRepository.save(reservation.getGuest()));
+                    reservationRepository.save(reservation);
+                    break;
+                }
+                else if (tablee.getNumberOfChairs() > i) {
+                    s.add(tablee);
+                    reservation.setTablees(s);
+                    reservation.setGuest(guestRepository.save(reservation.getGuest()));
+                    reservationRepository.save(reservation);
+                    break;
+                }
+               else {
+                   s.add(tablee);
+                   i=i-tablee.getNumberOfChairs();
+                   continue;
+
+                }
+
+            }
+
+        }
+
+
+for(Tablee tablee:s){
+
+
+    x=tablee.getNumberOfChairs()+x;
+}
+
+if(x<=reservation.getNumberOfpoeple()) {
+    for (Tablee t : s) {
+        s.remove(t);
+
+    }
+    if(tablees.isEmpty()&s.isEmpty()){
+
+        return s;
+    }
+}
+
+        return tablees;
+    }
+
+
+
+
+
+
+
 
 
 }

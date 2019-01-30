@@ -11,12 +11,10 @@ import java.util.List;
 public class TableController {
 
 
-    @Autowired
-    private ReservationRepository reservationRepository;
+
     @Autowired
     private TableRepository tableRepository;
-    @Autowired
-    private GuestRepository guestRepository;
+
 
         @RequestMapping(value = "/catch", method = RequestMethod.GET)
         public List<Tablee> getAll() {

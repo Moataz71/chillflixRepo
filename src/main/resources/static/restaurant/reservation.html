@@ -17,9 +17,13 @@
     <script type="text/javascript" src="dist/demo.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script>
-        function makeReservation(){
-
-       var datum = $("#datum").val();
+    function saveGuest(){
+    var first = $("#1").val();
+    var lastName =$("#2").val();
+    var phoneNum = $("#3").val();
+    var email = $("#4").val();
+var name= first+""+lastName;
+var datum = $("#datum").val();
        var time = $("#time").val();
        var datum1= String(datum);
   var datum2= datum1.substring(0,2);
@@ -32,14 +36,24 @@ console.log(datum5);
 var dateTime=datum5+ "T" +time + ":00";
 //yy-mm-dd
 var numberOfpoeple = $("#nr option:selected").val();
-       var obj={
-"reservationTime" : dateTime,
-"numberOfpoeple":numberOfpoeple
 
+
+var obj={
+
+        "reservationTime": dateTime,
+        "numberOfpoeple":numberOfpoeple,
+
+        "guest": {
+
+            "name": name,
+            "mobileNumber":phoneNum ,
+            "email": email
+        }
        }
 var jsonObject=JSON.stringify(obj);
+
 $.ajax({
-url:"http://localhost:8080/do-reserve",
+url:"http://localhost:8080/test1",
 type:"post",
 data: jsonObject,
 contentType:"application/json;",
@@ -48,7 +62,19 @@ contentType:"application/json;",
 })
 
 
-}
+
+
+
+    }
+
+
+
+
+
+
+
+
+
 
 function checkTime(){
 var datum = $("#datum").val();
@@ -125,6 +151,11 @@ contentType:"application/json;",
         <option value="4">4</option>
         <option value="5">5</option>
         <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+
     </select>
 
 
@@ -291,16 +322,16 @@ function calcHour(){
 <div id="Div2">
     <p>
     First name:*<br>
-    <input type="text" name="firstname" id="1"><br>
+    <input type="text" name="firstname" required id="1"><br>
     Last name:*<br>
-    <input type="text" name="lastname" id="2"><br>
+    <input type="text" name="lastname"  required id="2"><br>
     Telephone number:*<br>
-    <input type="text" name="Telephone number" id="3"><br>
+    <input type="text" name="Telephone number" required id="3"><br>
     Email:<br>
     <input type="email" name="Email" placeholder="Optional"id="4"></br>
     <br>
     </P>
-    <button onclick="switchVisible2();makeReservation()">Submit</button>
+    <button onclick="switchVisible2();saveGuest()">Submit</button>
 
     <script type="text/javascript">
 
