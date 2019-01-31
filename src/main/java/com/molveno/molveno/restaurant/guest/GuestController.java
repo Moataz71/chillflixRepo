@@ -2,6 +2,7 @@ package com.molveno.molveno.restaurant.guest;
 
 import com.molveno.molveno.restaurant.reservation.Reservation;
 import com.molveno.molveno.restaurant.reservation.ReservationRepository;
+import com.molveno.molveno.restaurant.table.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +14,7 @@ import java.util.List;
 @RestController
 public class GuestController {
     @Autowired
-    GuestRepository guestRepository;
-
-    @Autowired
-    private ReservationRepository reservationRepository;
+    private GuestRepository guestRepository;
 
     @RequestMapping(value = "/get-guest", method = RequestMethod.GET)
     public List<Guest> getAll() {

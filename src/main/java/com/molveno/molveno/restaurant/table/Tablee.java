@@ -1,6 +1,10 @@
 package com.molveno.molveno.restaurant.table;
 
+import com.molveno.molveno.restaurant.reservation.Reservation;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Tablee")
@@ -13,7 +17,7 @@ public class Tablee {
         return id;
     }
 
-    public void setId(long id) {
+  public void setId(long id) {
         this.id = id;
     }
     @Column(name = "numberofchairs")
@@ -21,6 +25,10 @@ public class Tablee {
 
     @Column(name = "nameoftable")
     private String nameoftable;
+
+    
+
+
 
     public int getNumberofchairs() {
         return numberofchairs;

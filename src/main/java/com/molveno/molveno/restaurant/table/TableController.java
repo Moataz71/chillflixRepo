@@ -1,6 +1,8 @@
 package com.molveno.molveno.restaurant.table;
 
 
+import com.molveno.molveno.restaurant.guest.GuestRepository;
+import com.molveno.molveno.restaurant.reservation.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,8 +11,10 @@ import java.util.List;
 public class TableController {
 
 
-        @Autowired
-        private TableRepository tableRepository;
+
+    @Autowired
+    private TableRepository tableRepository;
+
 
         @RequestMapping(value = "/catch", method = RequestMethod.GET)
         public List<Tablee> getAll() {

@@ -6,6 +6,7 @@ import com.molveno.molveno.restaurant.table.Tablee;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "Reservation")
@@ -21,26 +22,40 @@ public class Reservation {
     private LocalDateTime reservationTime;
 
 
+    //@OneToMany
+//@JoinColumn(name = "reservationid",referencedColumnName = "id")
+    @ManyToMany
+    @JoinTable(name = "tabelreservation",
+            joinColumns = {@JoinColumn(name = "reservationid")},
+            inverseJoinColumns = {@JoinColumn(name = "tableid")})
+    private List<Tablee> tablees;
 
-    // many reservation to one guest
-    //@Column(name = "guestid")
-    //private long guestId;
+    public List<Tablee> getTablees() {
+        return tablees;
+    }
 
-    //@Column(name = "tableid")
-    // many reservation to one table
-    //private long tableId;
+    public void setTablees(List<Tablee> tablees) {
+        this.tablees = tablees;
+    }
+//@JoinColumn(name="tableid",referencedColumnName = "id")
+//@OneToOne
+//private Tablee tablee;
 
-    @JoinColumn(name="tableid",referencedColumnName = "id")
-    @ManyToOne
-    private Tablee tablee;
 
-    @JoinColumn(name="guestid",referencedColumnName = "id")
-    @ManyToOne
+    @JoinColumn(name = "guestid", referencedColumnName = "id")
+    @OneToOne
+
     private Guest guest;
+    @Column(name = "numberofpople")
+    private int numberOfPoeple;
 
+    public int getNumberOfpoeple() {
+        return numberOfPoeple;
+    }
 
-
-
+    public void setNumberOfpoeple(int numberOfpoeple) {
+        this.numberOfPoeple = numberOfpoeple;
+    }
 
 
     public LocalDateTime getReservationTime() {
@@ -60,13 +75,6 @@ public class Reservation {
         this.id = id;
     }
 
-    public Tablee getTablee() {
-        return tablee;
-    }
-
-    public void setTablee(Tablee tablee) {
-        this.tablee = tablee;
-    }
 
     public Guest getGuest() {
         return guest;
@@ -77,20 +85,4 @@ public class Reservation {
     }
 
 
-    /*public long getGuestId() {
-        return guestId;
-    }
-
-    public void setGuestId(long guestId) {
-        this.guestId = guestId;
-    }
-
-    public long getTableId() {
-        return tableId;
-    }
-
-    public void setTableId(long tableId) {
-        this.tableId = tableId;
-    }
-    */
 }

@@ -150,11 +150,11 @@ public class Main {
 
 
         // System.out.println(listReservations);
-        ReservationLogic.doReserve(ReservationRequest, tables, listReservations, reservation3);
+       // ReservationLogic.doReserve(ReservationRequest, tables, listReservations, reservation3);
         //System.out.println(listReservations);
         System.out.println(ReservationLogic.getAvailableTables(ReservationRequest, tables, listReservations));
 
-        ReservationLogic.cancel(reservation3, listReservations);
+        //ReservationLogic.cancel(reservation3, listReservations);
         //   ReservationLogic.cancel(rese1,listReservations);
         // ReservationLogic.cancel(rese2,listReservations);
         //   ReservationLogic.cancel(r,listReservations);

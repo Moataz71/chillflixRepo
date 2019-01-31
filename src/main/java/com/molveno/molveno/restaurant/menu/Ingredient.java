@@ -1,9 +1,19 @@
 package com.molveno.molveno.restaurant.menu;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Ingredient")
 public class Ingredient {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Access(AccessType.PROPERTY)
     private long id;
+    @Column(name = "ingredientsname")
     private String ingredientsName;
+    @Column(name = "priceingredients")
     private double priceIngredients;
+
 
 
     public double getPriceIngredients() {
