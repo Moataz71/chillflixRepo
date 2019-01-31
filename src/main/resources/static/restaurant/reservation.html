@@ -87,17 +87,25 @@ var datum = $("#datum").val();
 
 var dateTime=datum5+ "T" +time + ":00";
 var numberOfpoeple = $("#nr option:selected").val();
-var obj={
-"reservationTime" : dateTime,
-"numberOfpoeple":numberOfpoeple
-       }
-var jsonObject=JSON.stringify(obj);
 $.ajax({
 url:"http://localhost:8080/compare-time",
-type:"post",
-data: jsonObject,
-contentType:"application/json;",
-      dataType: "application/json"
+type:"get",
+data: {
+"num":numberOfpoeple,
+"localDateTime":dateTime
+
+},
+success: function(response) {
+     if(response==false){
+     if(alert('you can not make a reservation !! Please click OK and change the time and the date')){}
+else    window.location.reload();
+
+     }
+    }
+
+
+
+
 
 
 
@@ -111,6 +119,7 @@ contentType:"application/json;",
 
 
 }
+
 
     </script>
 
@@ -177,7 +186,7 @@ contentType:"application/json;",
 			});
 		});
 </script>
-    Date <input type=text name=datum id=datum readonly  value=''  >
+    Date <input type=text name=datum  id=datum readonly  value=''  >
     <div class="iseeit-container">
         <script>
 		$('#datum').datepicker({
@@ -190,7 +199,7 @@ contentType:"application/json;",
 		</script>
     </div>
     <br>
-    Time <input type=text name=time id=time readonly  value=''  >
+    Time <input type=text name=time  id=time readonly  value=''  >
     <div class="iseeit-container">
         <script>
 
@@ -314,23 +323,25 @@ function calcHour(){
     </div>
     <p><br></p>
 
-    <button onclick="switchVisible();checkTime()">Reserve</button>
+    <button onclick="checkTime();switchVisible()">Reserve</button>
 
 
 </section>
 
 <div id="Div2">
+
     <p>
     First name:*<br>
-    <input type="text" name="firstname" required id="1"><br>
+    <input type="text" name="firstname"  id="1" required="required" ></input><br>
     Last name:*<br>
-    <input type="text" name="lastname"  required id="2"><br>
+    <input type="text" name="lastname"  id="2" required="required" ></input><br>
     Telephone number:*<br>
-    <input type="text" name="Telephone number" required id="3"><br>
+    <input type="text" name="Telephonenumber"  id="3" required="required" ></input><br>
     Email:<br>
     <input type="email" name="Email" placeholder="Optional"id="4"></br>
     <br>
     </P>
+
     <button onclick="switchVisible2();saveGuest()">Submit</button>
 
     <script type="text/javascript">
@@ -343,6 +354,7 @@ function calcHour(){
 </script>
 
 </div>
+
 <div id="demo">
 </div>
 
