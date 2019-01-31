@@ -20,6 +20,12 @@ public class TableController {
         public List<Tablee> getAll() {
             return tableRepository.findAll();
         }
+        @RequestMapping(value = "/delete-table",method = RequestMethod.DELETE,consumes = "application/json")
+    public void deleteTable(@RequestBody Tablee tablee){
+            tableRepository.deleteById(tablee.getId());
+
+
+        }
 
 
     }
