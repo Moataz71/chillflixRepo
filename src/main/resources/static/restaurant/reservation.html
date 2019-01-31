@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <META HTTP-EQUIV="refresh" CONTENT="NO-CACHE">
     <title>Reservation</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="dist/slick.js"></script>
@@ -78,7 +79,8 @@ contentType:"application/json;",
 
 function checkTime(){
 var datum = $("#datum").val();
-       var time = $("#time").val();
+ var time = $("#time").val();
+if(datum != 0 && time != 0)  {
        var datum1= String(datum);
   var datum2= datum1.substring(0,2);
   var datum3= datum1.substring(6,10);
@@ -86,7 +88,9 @@ var datum = $("#datum").val();
   var datum5=datum3+datum4+datum2;
 
 var dateTime=datum5+ "T" +time + ":00";
+
 var numberOfpoeple = $("#nr option:selected").val();
+
 $.ajax({
 url:"http://localhost:8080/compare-time",
 type:"get",
@@ -115,7 +119,9 @@ else    window.location.reload();
 
 })
 
-
+}
+else { alert ("Please Enter Time and Date")
+}
 
 
 }
@@ -280,6 +286,9 @@ function calcHour(){
     }
 
       function switchVisible() {
+      var datum = $("#datum").val();
+ var time = $("#time").val();
+      if(datum != 0 && time != 0){
             if (document.getElementById('Div1')) {
 
                 if (document.getElementById('Div1').style.display == 'none') {
@@ -290,6 +299,7 @@ function calcHour(){
                     document.getElementById('Div1').style.display = 'none';
                     document.getElementById('Div2').style.display = 'block';
                 }
+            }
             }
 }
       function switchVisible2() {
@@ -314,9 +324,8 @@ function calcHour(){
   var e = document.getElementById("time").value
   var f = document.getElementById("datum").value;
   var g = document.getElementById("nr").value;
-  var h = document.getElementById("data301").value;
 
-  var x = "We made reservation :  <br> on " +f +" at " +e + "<br>"+  "for " + g + " persons <br>" + " on table number " + h + "<br>"+ a +" "+ b + "<br>"+ c ;
+  var x = "Reservation has been made :  <br> on " +f +" at " +e + "<br>"+  "for " + g + " persons <br>" + "under the name " + "<br>"+ a +" "+ b + "<br>"+ c +"<br>"+"on" ;
   document.getElementById("demo").innerHTML = x;
 }
 
@@ -343,10 +352,77 @@ function calcHour(){
     <br>
     </P>
 
-    <button onclick="switchVisible2();saveGuest()">Submit</button>
+    <button onclick="checkdetails()">Submit</button>
 
     <script type="text/javascript">
 
+    function checkdetails(){
+  var a = document.getElementById("1").value;
+  var b = document.getElementById("2").value;
+  var c = document.getElementById("3").value;
+    if (a != 0 & b!=0 & c!=0){
+    switchVisible2();
+    getTable();
+    saveGuest();
+    }
+    else{
+    alert ("Please fill in the required fields")}
+    }
+
+
+function getTable(){
+var datum = $("#datum").val();
+ var time = $("#time").val();
+if(datum != 0 && time != 0)  {
+       var datum1= String(datum);
+  var datum2= datum1.substring(0,2);
+  var datum3= datum1.substring(6,10);
+  var datum4=datum1.substring(2,6);
+  var datum5=datum3+datum4+datum2;
+
+var dateTime=datum5+ "T" +time + ":00";
+
+var numberOfpoeple = $("#nr option:selected").val();
+
+$.ajax({
+url:"http://localhost:8080/test12",
+type:"get",
+data: {
+"num":numberOfpoeple,
+"reservationTime":dateTime
+
+},
+success: function(response) {
+var x = "";
+response.forEach(function (arrayItem) {
+    x += arrayItem.nameoftable;
+    x = x + " ";
+
+});
+    var table ="<p>"+x+"</p>";
+    console.log(table);
+    $(table).appendTo('#demo');
+
+}
+
+
+
+
+
+
+
+
+
+
+
+})
+
+}
+else { alert ("Please Enter Time and Date")
+}
+
+
+}
 
 
 
