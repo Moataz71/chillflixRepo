@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>reservationadmin</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="dist/slick.js"></script>
+    <script type="text/javascript" src="dist/jquery.scrollUp.js"></script>
+    <script>
+            $(document).ready(function(){
+
+ $.ajax({
+                url:"http://localhost:8080/catch",
+                type: "get",
+                success: function(data){
+                    $.each(data,function(id,obj){
+                        var s1="<option value="+obj.id+">"+ obj.nameoftable +" "+"_Number of chairs:"+" "+obj.numberofchairs+"</option>";
+                        $(s1).appendTo('#table');
+                     })}
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+            $.ajax({
+                url:"http://localhost:8080/get-reservation",
+                type: "get",
+                success: function(data){
+                    $.each(data,function(id,obj){
+               var a =obj.reservationTime;
+                var b= a.toString();
+                var c= b.substring(0,10);
+                 var d=b.substring(11,16);
+var e="Date:"+" "+c+" "+"Time:"+" "+d;
+var x=obj.tablees;
+var b="";
+x.forEach(function(a) {
+  b+=a.nameoftable;
+  b=b+" ";
+});
+
+                        var s="<option value="+obj.id+">"+e+" "+obj.guest.name+" "+"for"+" "+obj.numberOfpoeple+"  "+"persons"+" "+b +"</option>";
+                        $(s).appendTo('#reservation');
+                     })}
+            });
+        })
+
+
+function deleteReservation(){
+
+
+
+
+              var id = $("#reservation option:selected").val();
+
+              var object ={
+              "id":id
+              };
+
+              var jsonObject=JSON.stringify(object);
+
+              $.ajax({
+
+              url:"http://localhost:8080/delete-reservation",
+              type:"delete",
+              data: jsonObject,
+              contentType:"application/json;",
+                success: alert("success"),
+              dataType: "application/json"
+
+
+
+          })
+
+                  }
+function deleteTable(){
+var id = $("#table option:selected").val();
+
+              var object ={
+              "id":id
+              };
+
+              var jsonObject=JSON.stringify(object);
+
+              $.ajax({
+
+              url:"http://localhost:8080/delete-table",
+              type:"delete",
+              data: jsonObject,
+              contentType:"application/json;",
+                success: alert("success"),
+              dataType: "application/json"
+
+
+
+})
+}
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</head>
+<body>
+<P>Reservation</P>
+<select id="reservation"></select>
+<br>
+<br>
+<button type="button" onclick="deleteReservation()">Delete Reservation</button>
+<br>
+<br>
+<br>
+<select id="table"></select>
+<br>
+<br>
+<button type="button" onclick="deleteTable()">Delete Reservation</button>
+<!---->
+</body>
+</html>
