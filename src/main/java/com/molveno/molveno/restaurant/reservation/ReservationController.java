@@ -141,8 +141,8 @@ public boolean checkAva(@RequestParam String localDateTime, int num) {
             }
 
         }
-
     }
+
 return false;
 }
 
@@ -157,6 +157,7 @@ return false;
 
     @RequestMapping(value = "/test1", method = RequestMethod.POST, consumes = "application/json")
     public List<Tablee> test1(@RequestBody Reservation reservation) {
+
         List<Tablee> tablees = getAvailableTables(reservation.getReservationTime(), tableRepository.findAll(), reservationRepository.findAll());
                 int x = 0;
         int i = reservation.getNumberOfpoeple();
@@ -192,6 +193,47 @@ return false;
 
         return tablees;
     }
+
+
+
+
+
+    @RequestMapping(value = "/test12", method = RequestMethod.GET)
+    public List<Tablee> test2(@RequestParam String reservationTime, int num) {
+        LocalDateTime dateTime=LocalDateTime.parse(reservationTime);
+    List<Tablee> tablees = getAvailableTables(dateTime, tableRepository.findAll(), reservationRepository.findAll());
+
+        int x = 0;
+        int i = num;
+        List<Tablee> s = new ArrayList<>();
+
+        if (0 < tablees.size()) {
+            for (Tablee tablee : tablees) {
+                if (tablee.getNumberOfChairs() == i) {
+                    s.add(tablee);
+                    return  s;
+
+                } else if (tablee.getNumberOfChairs() > i) {
+                    s.add(tablee);
+                   return s;
+
+                } else {
+                    s.add(tablee);
+                    i = i - tablee.getNumberOfChairs();
+                    continue;
+
+                }
+
+            }
+
+        }
+
+
+
+
+        return s;
+    }
+
 
 
 }
