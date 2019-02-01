@@ -8,7 +8,6 @@ INSERT INTO Tablee (numberofchairs, nameoftable) VALUES ('4', 'Table 6');
 INSERT INTO Tablee (numberofchairs, nameoftable) VALUES ('6', 'Table 7');
 INSERT INTO Tablee (numberofchairs, nameoftable) VALUES ('6', 'Table 8');
 
-INSERT INTO Reservation (guestid, reservationtime,numberofpople) VALUES ('1', parseDateTime('2019020102900','yyyyMMddHHmmss'),'4');
 
 
 
