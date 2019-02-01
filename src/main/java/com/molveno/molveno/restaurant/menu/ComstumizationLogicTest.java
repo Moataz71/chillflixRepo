@@ -1,6 +1,6 @@
 
 
-
+/*
 package com.molveno.molveno.restaurant.menu;
 
 import org.junit.Before;
@@ -33,3 +33,4 @@ public class ComstumizationLogicTest {
 
 }
 
+*/

@@ -1,11 +1,23 @@
 package com.molveno.molveno.restaurant.menu;
 
+import javax.persistence.*;
+
 public class Comstumization {
+private long id;
 
     private double costumizationPrice;
+
     private double effortPrice;
     private Ingredient ingredient;
     private Dish dish;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public double getCostumizationPrice() {
         return costumizationPrice;

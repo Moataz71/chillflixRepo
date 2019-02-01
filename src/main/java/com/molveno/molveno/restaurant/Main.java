@@ -53,18 +53,17 @@ public class Main {
 
         int z;
         Ingredient ingredient2 = new Ingredient();
-        ingredient2.setPriceIngredients(10);
+
 
         comstumization1.setEffortPrice(3);
-        ingredients1.setPriceIngredients(50);
+
         List<Ingredient> ingredientlist = new ArrayList<>();
         ingredientlist.add(ingredients1);
         comstumization1.setIngredient(ingredient2);
         comstumization1.setDish(dish1);
-        dish1.setIngredients(ingredientlist);
 
-        comstumization1.setCostumizationPrice(ComstumizationLogic.calculateCustomizationPrice(comstumization1));
-        dish1.setDishPrice(DishLogic.calculateDishprice(dish1));
+
+
 
 
         List<Dish> dishes = new ArrayList<>();

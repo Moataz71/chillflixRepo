@@ -29,6 +29,8 @@ public class ReservationController {
 
     @RequestMapping(value = "/get-reservation", method = RequestMethod.GET)
     public List<Reservation> getAll() {
+
+
         return reservationRepository.findAll();
     }
 

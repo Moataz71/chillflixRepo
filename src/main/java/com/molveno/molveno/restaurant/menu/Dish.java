@@ -15,7 +15,6 @@ public class Dish {
     @Column(name = "dishprice")
     private double dishPrice;
 
-
     @Column(name = "dishtype")
     private String dishType;
 
@@ -27,14 +26,10 @@ public class Dish {
         this.dishType = dishType;
     }
 
-    @ManyToMany
-
-@JoinTable(name = "dishingriedints",
-        joinColumns = {@JoinColumn(name = "dishid")},
-        inverseJoinColumns = {@JoinColumn(name = "ingriedntsid")})
 
 
-    private List<Ingredient> ingredients;
+
+
 
     public double getDishPrice() {
         return dishPrice;
@@ -71,13 +66,6 @@ public class Dish {
 
 
 
-    public List<Ingredient> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<Ingredient> ingredients) {
-        this.ingredients = ingredients;
-    }
 
     //public  void dishprice(){
     //dishPrice= ingredients.getPriceIngredients() + ingredients.getExtraPriceIngredients();
