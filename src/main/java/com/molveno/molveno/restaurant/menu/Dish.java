@@ -18,6 +18,8 @@ public class Dish {
     @Column(name = "dishtype")
     private String dishType;
 
+
+
     public String getDishType() {
         return dishType;
     }
