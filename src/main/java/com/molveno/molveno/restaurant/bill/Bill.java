@@ -3,16 +3,12 @@ package com.molveno.molveno.restaurant.bill;
 import com.molveno.molveno.restaurant.guest.Guest;
 import com.molveno.molveno.restaurant.order.Order;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
 public class Bill {
-
     private int id;
-
     private Order order;
     private Guest guest;
-
     private LocalDateTime t;
 
     public int getId() {

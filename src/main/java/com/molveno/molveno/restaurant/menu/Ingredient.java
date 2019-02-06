@@ -9,18 +9,19 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Access(AccessType.PROPERTY)
     private long id;
-@Column(name = "ingredientsname")
+    @Column(name = "ingredientsname")
     private String ingredientsName;
-@Column(name = "priceperquantityingredient")
-    private double pricePerquantityIngredient;
+    @Column(name = "priceingredients")
+    private double priceIngredients;
 
 
-    public double getPricePerquantityIngredient() {
-        return pricePerquantityIngredient;
+
+    public double getPriceIngredients() {
+        return priceIngredients;
     }
 
-    public void setPricePerquantityIngredient(double pricePerquantityIngredient) {
-        this.pricePerquantityIngredient = pricePerquantityIngredient;
+    public void setPriceIngredients(double priceIngredients) {
+        this.priceIngredients = priceIngredients;
     }
 
     public long getId() {

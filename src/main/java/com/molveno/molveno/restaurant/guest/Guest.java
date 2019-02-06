@@ -50,5 +50,4 @@ public class Guest {
     public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
-    //INSERT INTO Reservation (guestid, reservationtime,numberofpople) VALUES ('1', parseDateTime('2019020102900','yyyyMMddHHmmss'),'4');
 }
