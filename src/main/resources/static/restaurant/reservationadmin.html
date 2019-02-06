@@ -140,6 +140,7 @@ var id = $("#table option:selected").val();
               success: alert("success")
 
         })
+        }
 
 function deleteGuest(){
 var id = $("#Guest option:selected").val();
@@ -195,7 +196,7 @@ function editGuest(){
           })
 
                   }
-}
+
 
        function editTable(){
      //   var nameOfTable = $("#table option:selected").text();
@@ -219,9 +220,9 @@ function editGuest(){
         })
 
 
+
+
 }
-
-
 
     </script>
 
@@ -242,9 +243,24 @@ function editGuest(){
 <br>
 <br>
 <button type="button" onclick="deleteTable()">Delete Table</button>
+<button type="button" onclick="editTable()">Edit Table</button>
+
 <br>
 <br>
-<P>Guests</P>
+
+<form>
+    <H1>Add new table</H1>
+    <p> insert name of table</p>
+    <input id="nameOfTable" type="text"/>
+    <p> insert number of chairs</p>
+    <input id="numberOfChairs" type="number"/>
+    <p></p>
+    <button type="button" onclick="addTable()">Add Table</button>
+
+
+</form>
+
+<H1>Guests</H1>
 
 <select id="Guest"></select>
 <br>
@@ -264,22 +280,8 @@ function editGuest(){
     <button type="button" onclick="editGuest()">Change guest information</button>
 </form>
 
-<button type="button" onclick="deleteTable()">Delete Table</button>
-<button type="button" onclick="editTable()">Edit Table</button>
 
 <p></p>
-
-<form>
-    <H1>Add new table</H1>
-    <p> insert name of table</p>
-    <input id="nameOfTable" type="text"/>
-    <p> insert number of chairs</p>
-    <input id="numberOfChairs" type="number"/>
-    <p></p>
-    <button type="button" onclick="addTable()">Add Table</button>
-
-
-</form>
 
 <!---->
 </body>
