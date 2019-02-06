@@ -18,7 +18,19 @@ public class Dish {
     @Column(name = "dishtype")
     private String dishType;
 
+    @ManyToMany
+    @JoinTable(name = "dishingredients",
+            joinColumns = {@JoinColumn(name = "dishid")},
+            inverseJoinColumns = {@JoinColumn(name = "ingredientsid")})
+    private List<Ingredient> ingredients;
 
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
 
     public String getDishType() {
         return dishType;

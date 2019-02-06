@@ -52,6 +52,22 @@ x.forEach(function(a) {
                         $(s).appendTo('#reservation');
                      })}
             });
+
+            $.ajax({
+                url:"http://localhost:8080/get-guest",
+                type: "get",
+                success: function(data){
+                    $.each(data,function(id,obj){
+                        var s1="<option value="+obj.id+">"+obj.name+" "+obj.email+" "+obj.mobileNumber+"</option>";
+                        $(s1).appendTo('#Guest');
+                     })}
+            });
+
+
+
+
+
+
         })
 
 
@@ -105,7 +121,60 @@ var id = $("#table option:selected").val();
 })
 }
 
+function deleteGuest(){
+var id = $("#Guest option:selected").val();
 
+              var object ={
+              "id":id
+              };
+
+              var jsonObject=JSON.stringify(object);
+
+              $.ajax({
+
+              url:"http://localhost:8080/delete-guest",
+              type:"delete",
+              data: jsonObject,
+              contentType:"application/json;",
+                success: alert("success"),
+              dataType: "application/json"
+
+
+
+})
+}
+function editGuest(){
+
+
+
+              var name = $("#editname").val();
+              var mobileNumber = $("#editMobileNumber").val();
+              var email = $("#editEmail").val();
+              var id = $("#Guest option:selected").val();
+
+              var object ={
+              "name":name,
+              "mobileNumber":mobileNumber,
+              "id":id,
+              "email":email
+              };
+
+              var jsonObject=JSON.stringify(object);
+
+              $.ajax({
+
+              url:"http://localhost:8080/edit-guest",
+              type:"post",
+              data: jsonObject,
+              contentType:"application/json;",
+                success: alert("success"),
+              dataType: "application/json"
+
+
+
+          })
+
+                  }
 
 
 
@@ -127,10 +196,32 @@ var id = $("#table option:selected").val();
 <br>
 <br>
 <br>
+<P>Tables</P>
 <select id="table"></select>
 <br>
 <br>
-<button type="button" onclick="deleteTable()">Delete Reservation</button>
-<!---->
+<button type="button" onclick="deleteTable()">Delete Table</button>
+<br>
+<br>
+<P>Guests</P>
+
+<select id="Guest"></select>
+<br>
+<br>
+<button type="button" onclick="deleteGuest()">Delete Guest</button>
+<br>
+<br>
+<form>
+    <p>edit the name</p>
+    <input id="editname" type="text"></input>
+    <p>edit the MobileNumber</p>
+    <input id="editMobileNumber"  type="text" ></input>
+    <p>edit the email</p>
+    <input id="editEmail"  type="email" min="0" max="125"></input>
+    <br>
+    <br>
+    <button type="button" onclick="editGuest()">Change guest information</button>
+</form>
+
 </body>
 </html>
