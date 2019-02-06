@@ -5,52 +5,67 @@
     <title>Dishadding</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="dist/jquery.scrollUp.js"></script>
-    $(document).ready(function(){
+    <script>
 
-    $.ajax({
-    url:"http://localhost:8080/catch",
-    type: "get",
-    success: function(data){
-    $.each(data,function(id,obj){
-    var s1="<option value="+obj.id+">"+ obj.nameoftable +" "+"_Number of chairs:"+" "+obj.numberofchairs+"</option>";
-    $(s1).appendTo('#table');
-    })}
-    });
-
-
-
-</head>
-<body>
-<p>Ingredient name</p>
-<input id="1" >
-</br>
-<p>Ingredients price</p>
-<input id="2" >
-</br>
-</br>
-<button onclick="AddIngredients()">Add ingredient</button>
-<script>
-function AddIngredients(){
+function addDish(){
 var a=$("#1").val();
 var b=$("#2").val();
+var c=$("#3").val();
+var d=$("#4").val();
+var e=$("#5").val();
+
+var f=$("#6").val();
+
+
 var obj={
-"ingredientsName":a,
-"priceIngredients":b,
+"dishName":f,
+ingredients:[
+{"ingredientsName":a
+},
+{"ingredientsName":b
+},
+{"ingredientsName":c
+},
+{"ingredientsName":d
+},
+{"ingredientsName":e
 }
+
+]
+}
+
 var jsonObject=JSON.stringify(obj);
 
 $.ajax({
-url:"http://localhost:8080/save-ingredients",
+url:"http://localhost:8080/save-dish",
 type:"post",
 data: jsonObject,
 contentType:"application/json;",
       dataType: "application/json"
+
 })
+
 
 }
 
-</script>
 
 
+    </script>
+
+
+</head>
+<body>
+<P>add ingredients</P>
+<input id="1" >
+<input id="2" >
+<input id="3" >
+<input id="4" >
+<input id="5" >
+
+<p>add dish </p>
+<input id="6">
+<br>
+<button type="button" onclick="addDish()"></button>
+<p id="dish"></p>
 </body>
 </html>
