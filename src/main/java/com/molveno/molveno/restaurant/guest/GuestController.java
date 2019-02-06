@@ -21,18 +21,37 @@ public class GuestController {
         return guestRepository.findAll();
     }
 
-    @RequestMapping(value = "/save-guest", method = RequestMethod.POST , consumes="application/json")
+    @RequestMapping(value = "/save-guest", method = RequestMethod.POST, consumes = "application/json")
     public void saveGuest(@RequestBody Guest guest) {
         guestRepository.save(guest);
     }
 
-    @RequestMapping(value = "/delete-guest", method = RequestMethod.DELETE , consumes="application/json")
-    public void deleteReservation(@RequestBody Guest guest){
+    @RequestMapping(value = "/delete-guest", method = RequestMethod.DELETE, consumes = "application/json")
+    public void deleteReservation(@RequestBody Guest guest) {
         guestRepository.deleteById(guest.getId());
 
     }
 
+    @RequestMapping(value = "/edit-guest", method = RequestMethod.POST, consumes = "application/json")
+    public void editPerson(@RequestBody Guest guest) {
 
+
+        Guest g = guestRepository.findById(guest.getId());
+
+
+        if (!guest.getEmail().equals("")) {
+            g.setEmail(guest.getEmail());
+        }
+        if (!guest.getMobileNumber().equals("")) {
+            g.setMobileNumber(guest.getMobileNumber());
+        }
+        if (!guest.getName().equals("")) {
+            g.setName(guest.getName());
+        }
+
+        guestRepository.save(g);
+
+    }
 
 
 }

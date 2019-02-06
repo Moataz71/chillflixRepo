@@ -7,6 +7,26 @@
     <script type="text/javascript" src="dist/jquery.scrollUp.js"></script>
     <script>
 
+
+$(document).ready(function(){
+
+            $.ajax({
+                url:"http://localhost:8080/get-dish",
+                type: "get",
+                success: function(data){
+                    $.each(data,function(id,obj){
+                        var dish1="<option value="+obj.id+">"+obj.dishName+" </option>";
+                        $(dish1).appendTo('#Dish1');
+                     })}
+            });
+        })
+
+
+
+
+
+
+
 function addDish(){
 var a=$("#1").val();
 var b=$("#2").val();
@@ -41,8 +61,8 @@ url:"http://localhost:8080/save-dish",
 type:"post",
 data: jsonObject,
 contentType:"application/json;",
-      dataType: "application/json"
-
+      dataType: "application/json",
+success:alert("good")
 })
 
 
@@ -56,16 +76,26 @@ contentType:"application/json;",
 </head>
 <body>
 <P>add ingredients</P>
+<P>ingredient 1</P>
 <input id="1" >
+<P>ingredient 2</P>
 <input id="2" >
+<P>ingredient 3</P>
 <input id="3" >
+<P>ingredient 4</P>
 <input id="4" >
+<P>ingredient 5</P>
 <input id="5" >
 
-<p>add dish </p>
+<p>add dish name </p>
 <input id="6">
 <br>
-<button type="button" onclick="addDish()"></button>
-<p id="dish"></p>
+<br>
+<button type="button" onclick="addDish()">Add Dish </button>
+
+<br>
+<p>Show Dishes</p>
+<select id="Dish1"></select>
+
 </body>
 </html>
