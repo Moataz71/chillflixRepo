@@ -19,7 +19,8 @@
 
 
 
-                        var s1="<input type=\"checkbox\" name=\"dx\" id=\""+obj.id+"\""+">"+ obj.ingredientsName +"<br>";
+                        var s1="<input type=\"checkbox\" name=\"dx\" id=\""+obj.id+"\""+">"+ obj.ingredientsName +"<input type=\"text\" name=\"dx\" id=\""+obj.id+"A" +"\""+"> "+"<br>";
+
 
                         $(s1).appendTo('#s1');
                          })}
@@ -92,18 +93,25 @@ function CheckName(){
             }
 function start(){
 var someObj=[];
+let tot = "";
 
 $("input:checkbox").each(function(){
     var $this = $(this);
 
     if($this.is(":checked")){
+
+
     for (var i in Ara){
     if (Ara[i].id == ($this.attr("id"))){
     someObj.push(Ara[i]);
+    var ing = $this.attr("id")+"A";
+    var q =document.getElementById(ing).value;
+    tot += q+"A";
+    console.log(tot);
     }
-    console.log(someObj);
+
     }
-        ;
+
     }
 });
 }
