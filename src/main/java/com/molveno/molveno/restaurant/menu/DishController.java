@@ -23,13 +23,13 @@ public class DishController {
 
     @RequestMapping(value = "/save-dish", method = RequestMethod.POST, consumes = "application/json")
     public void saveDish(@RequestBody Dish dish) {
-        int i =dish.getIngredients().size()-1;
-        while (i>=0){
+        int i = dish.getIngredients().size() - 1;
+        while (i >= 0) {
 
             ingredientRepository.save(dish.getIngredients().get(i));
             i--;
         }
-dishRepository.save(dish);
+        dishRepository.save(dish);
     }
 
 }

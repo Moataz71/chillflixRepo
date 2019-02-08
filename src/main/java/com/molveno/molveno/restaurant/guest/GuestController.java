@@ -22,8 +22,10 @@ public class GuestController {
     }
 
     @RequestMapping(value = "/save-guest", method = RequestMethod.POST, consumes = "application/json")
-    public void saveGuest(@RequestBody Guest guest) {
+    public Guest saveGuest(@RequestBody Guest guest) {
+
         guestRepository.save(guest);
+        return guest;
     }
 
     @RequestMapping(value = "/delete-guest", method = RequestMethod.DELETE, consumes = "application/json")
