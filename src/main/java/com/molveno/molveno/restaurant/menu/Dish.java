@@ -10,6 +10,9 @@ public class Dish {
     @Access(AccessType.PROPERTY)
     private long id;
 
+    @Column(name = "ingredientsquan")
+    private String ingredientsQuan;
+
     @Column(name = "dishname")
     private String dishName;
     @Column(name = "dishprice")
@@ -77,11 +80,15 @@ public class Dish {
         this.dishPrice = price;
     }
 
+    public String getIngredientsQuan() {
+        return ingredientsQuan;
+    }
 
+    public void setIngredientsQuan(String ingredientsQuan) {
+        this.ingredientsQuan = ingredientsQuan;
+    }
 
-
-
-    //public  void dishprice(){
+//public  void dishprice(){
     //dishPrice= ingredients.getPriceIngredients() + ingredients.getExtraPriceIngredients();
 
 
