@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,17 +19,104 @@ public class DishController {
 
     @RequestMapping(value = "/get-dish", method = RequestMethod.GET)
     public List<Dish> getDishes() {
+
+
+
+/*
+List<Dish> a =dishRepository.findAll();
+for(Dish d:a){
+
+
+double price =0;
+    String x1 = " ";
+    List<Double> x2 = new ArrayList<>();
+    List<String> x = new ArrayList<>();
+    for (int i = 0; i < d.getIngredientsQuan().length(); i++) {
+        if (d.getIngredientsQuan().charAt(i) == 'A') {
+            x.add(x1);
+            x1 = " ";
+
+        } else {
+            String s = Character.toString(d.getIngredientsQuan().charAt(i));
+            x1 = (x1 + s).trim();
+
+        }
+
+
+    }
+
+    for (String s : x) {
+
+        x2.add(Double.parseDouble(s));
+
+    }
+    for(int i=0;i<x2.size();i++){
+        price= x2.get(i)*d.getIngredients().get(i).getPriceIngredients() +price;
+
+    }
+
+
+    d.setDishPrice(price);
+
+
+
+    dishRepository.save(d);
+
+}
+
+
+
+
+
+
+
+
+*/
+
         return dishRepository.findAll();
+
+
     }
 
     @RequestMapping(value = "/save-dish", method = RequestMethod.POST, consumes = "application/json")
     public void saveDish(@RequestBody Dish dish) {
-        int i = dish.getIngredients().size() - 1;
-        while (i >= 0) {
+       double price =0;
+        String x1 = " ";
+        List<Double> x2 = new ArrayList<>();
+        List<String> x = new ArrayList<>();
+        for (int i = 0; i < dish.getIngredientsQuan().length(); i++) {
+            if (dish.getIngredientsQuan().charAt(i) == 'A') {
+                x.add(x1);
+                x1 = " ";
 
-            ingredientRepository.save(dish.getIngredients().get(i));
-            i--;
+            } else {
+                String s = Character.toString(dish.getIngredientsQuan().charAt(i));
+                x1 = (x1 + s).trim();
+
+            }
+
+
         }
+
+        for (String s : x) {
+
+            x2.add(Double.parseDouble(s));
+
+        }
+
+        for(int i=0;i<x2.size();i++){
+            price= x2.get(i)*dish.getIngredients().get(i).getPriceIngredients() +price;
+
+        }
+
+
+        dish.setDishPrice(price);
+
+
+
+
+
+
         dishRepository.save(dish);
     }
 
