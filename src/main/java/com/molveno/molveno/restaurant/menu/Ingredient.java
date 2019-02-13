@@ -13,8 +13,17 @@ public class Ingredient {
     private String ingredientsName;
     @Column(name = "priceingredients")
     private double priceIngredients;
+    @Column(name = "ingredientquantitytype")
+private String ingredientQuantityType;
 
 
+    public String getIngredientQuantityType() {
+        return ingredientQuantityType;
+    }
+
+    public void setIngredientQuantityType(String ingredientQuantityType) {
+        this.ingredientQuantityType = ingredientQuantityType;
+    }
 
     public double getPriceIngredients() {
         return priceIngredients;

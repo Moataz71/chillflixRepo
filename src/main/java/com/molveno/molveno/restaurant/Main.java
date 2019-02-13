@@ -110,25 +110,7 @@ public class Main {
 
         //System.out.println(ReservationLogic.checkDateTime(ReservationRequest, current));
 
-        Tablee table1 = new Tablee();
-        table1.setId(1);
-        table1.setNumberOfChairs(4);
-        Tablee table2 = new Tablee();
-        table2.setId(2);
-        table2.setNumberOfChairs(6);
-        Tablee table4 = new Tablee();
-        table4.setId(4);
-        table4.setNumberOfChairs(8);
-        Tablee table3 = new Tablee();
-        table3.setId(3);
-        table3.setNumberOfChairs(8);
-        //boolean timeAvailable = ReservationLogic.checkDateTime(ReservationRequest, current);
 
-        List<Tablee> tables = new ArrayList<>();
-        tables.add(table1);
-        tables.add(table2);
-        tables.add(table3);
-        tables.add(table4);
 
 
         Reservation rese1 = new Reservation();
@@ -152,7 +134,7 @@ public class Main {
         // System.out.println(listReservations);
        // ReservationLogic.doReserve(ReservationRequest, tables, listReservations, reservation3);
         //System.out.println(listReservations);
-        System.out.println(ReservationLogic.getAvailableTables(ReservationRequest, tables, listReservations));
+
 
         //ReservationLogic.cancel(reservation3, listReservations);
         //   ReservationLogic.cancel(rese1,listReservations);
@@ -176,7 +158,7 @@ public class Main {
 
         //  LocalDateTime ReservationRequest2 = LocalDateTime.of(date4, time4);
         //System.out.println( ReservationLogic.getAvailableTables(ReservationRequest2,tables,listReservations).toString());
-        System.out.println(ReservationLogic.getAvailableTables(ReservationRequest, tables, listReservations));
+
 
 
     }

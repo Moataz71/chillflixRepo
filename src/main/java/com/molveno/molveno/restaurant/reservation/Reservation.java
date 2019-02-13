@@ -47,14 +47,14 @@ public class Reservation {
 
     private Guest guest;
     @Column(name = "numberofpople")
-    private int numberOfPoeple;
+    private int numberOfpoeple;
 
     public int getNumberOfpoeple() {
-        return numberOfPoeple;
+        return numberOfpoeple;
     }
 
     public void setNumberOfpoeple(int numberOfpoeple) {
-        this.numberOfPoeple = numberOfpoeple;
+        this.numberOfpoeple = numberOfpoeple;
     }
 
 

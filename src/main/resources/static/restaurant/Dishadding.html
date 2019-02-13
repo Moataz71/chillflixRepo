@@ -19,7 +19,7 @@
 
 
 
-                        var s1="<input type=\"checkbox\" name=\"dx\" id=\""+obj.id+"\""+">"+ obj.ingredientsName +"<input type=\"text\" name=\"dx\" id=\""+obj.id+"A" +"\""+"> "+"<br>";
+                        var s1="<input type=\"checkbox\" name=\"dx\" id=\""+obj.id+"\""+">"+ obj.ingredientsName +" "+ obj.ingredientQuantityType +"<input  type=\"text\" name=\"dx\" id=\""+obj.id+"A" +"\""+"> "+"<br>";
 
 
                         $(s1).appendTo('#s1');
@@ -32,10 +32,14 @@ function saveIng(){
 
               var ingredientsName = $("#1").val();
               var priceIngredients = $("#2").val();
+              var ingredientQuantityType =$("#type option:selected").val();
+
 
               var object ={
               "ingredientsName":ingredientsName,
-              "priceIngredients":priceIngredients
+              "priceIngredients":priceIngredients,
+              "ingredientQuantityType":ingredientQuantityType
+
               };
 
               var jsonObject=JSON.stringify(object);
@@ -128,11 +132,18 @@ $("input:checkbox").each(function(){
 
 
 </head>
-<body>
+
 <P>add ingredients</P>
 <p>name</p>
 <br>
 <input id="1">
+
+<p> Type </p>
+<select id="type">
+    <option value="Kg">Kg</option>
+    <option value="piece">piece</option>
+</select>
+<br>
 <p>price</p>
 <input id="2">
 <button type="button" onclick="saveIng();CheckName()">Add ingredient</button>

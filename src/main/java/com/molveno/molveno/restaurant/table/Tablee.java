@@ -46,13 +46,7 @@ public class Tablee {
         this.nameoftable = nameoftable;
     }
 
-    public int getNumberOfChairs() {
-        return numberofchairs;
-    }
-
-    public void setNumberOfChairs(int numberOfChairs) {
-        this.numberofchairs = numberOfChairs;
-    }
+   
 
 //samer
 
