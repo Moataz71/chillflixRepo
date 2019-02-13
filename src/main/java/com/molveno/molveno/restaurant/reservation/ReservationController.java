@@ -33,10 +33,11 @@ public class ReservationController {
     }
 
     @RequestMapping(value = "/save-reservation", method = RequestMethod.POST, consumes = "application/json")
-    public void saveReservation(@RequestBody Reservation reservation) {
+    public Reservation saveReservation(@RequestBody Reservation reservation) {
 
 
         reservationRepository.save(reservation);
+        return reservation;
     }
 
     @RequestMapping(value = "/delete-reservation", method = RequestMethod.DELETE, consumes = "application/json")

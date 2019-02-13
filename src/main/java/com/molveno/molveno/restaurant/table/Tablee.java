@@ -29,15 +29,6 @@ public class Tablee {
     
 
 
-
-    public int getNumberofchairs() {
-        return numberofchairs;
-    }
-
-    public void setNumberofchairs(int numberofchairs) {
-        this.numberofchairs = numberofchairs;
-    }
-
     public String getNameoftable() {
         return nameoftable;
     }

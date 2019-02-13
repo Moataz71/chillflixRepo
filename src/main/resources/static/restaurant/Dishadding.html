@@ -114,6 +114,31 @@ $("input:checkbox").each(function(){
 
     }
 });
+
+
+              var dishName = $("#dishName").val();
+
+
+              var object ={
+              "dishName":dishName,
+              "ingredients":someObj,
+              "ingredientsQuan":tot
+              };
+
+              var jsonObject=JSON.stringify(object);
+
+              $.ajax({
+
+              url:"http://localhost:8080/save-dish",
+              type:"post",
+              data: jsonObject,
+              contentType:"application/json;",
+
+              dataType: "application/json"
+
+
+
+          })
 }
 
 
@@ -140,6 +165,9 @@ $("input:checkbox").each(function(){
 <form action="/action_page.php" id="s1">
 </form>
 
+<p></p>
+
+<input type="text" id="dishName" >
 <button type="button" onclick="start()">Start the function</button>
 </body>
 </html>
