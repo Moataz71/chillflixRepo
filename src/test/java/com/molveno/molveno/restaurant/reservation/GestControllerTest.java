@@ -1,4 +1,4 @@
-package com.molveno.molveno.restaurant.reservation.guest;
+package com.molveno.molveno.restaurant.reservation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.molveno.molveno.restaurant.guest.Guest;

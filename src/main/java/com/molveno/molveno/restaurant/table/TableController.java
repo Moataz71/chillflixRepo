@@ -35,7 +35,7 @@ public class TableController {
     public void editTable(@RequestBody Tablee table) {
         Tablee p = tableRepository.findById(table.getId());
       //  p.setNameoftable(table.getNameoftable());
-        p.setNumberOfChairs(table.getNumberOfChairs());
+        p.setNumberofchairs(table.getNumberofchairs());
         tableRepository.save(p);
     }
 

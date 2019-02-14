@@ -35,7 +35,6 @@ public class ReservationController {
     @RequestMapping(value = "/save-reservation", method = RequestMethod.POST, consumes = "application/json")
     public Reservation saveReservation(@RequestBody Reservation reservation) {
 
-
         reservationRepository.save(reservation);
         return reservation;
     }
@@ -59,17 +58,17 @@ public boolean checkAva(@RequestParam String localDateTime, int num) {
 
     if (0 < tablees.size()) {
         for (Tablee tablee : tablees) {
-            if (tablee.getNumberOfChairs() == num) {
+            if (tablee.getNumberofchairs() == num) {
 
 
                 return true;
-            } else if (tablee.getNumberOfChairs() > num) {
+            } else if (tablee.getNumberofchairs() > num) {
 
 
                 return true;
             } else {
 
-                num = num - tablee.getNumberOfChairs();
+                num = num - tablee.getNumberofchairs();
                 continue;
 
             }
@@ -99,13 +98,13 @@ return false;
 
         if (0 < tablees.size()) {
             for (Tablee tablee : tablees) {
-                if (tablee.getNumberOfChairs() == i) {
+                if (tablee.getNumberofchairs() == i) {
                     s.add(tablee);
                     reservation.setTablees(s);
                     reservation.setGuest(guestRepository.save(reservation.getGuest()));
                     reservationRepository.save(reservation);
                     break;
-                } else if (tablee.getNumberOfChairs() > i) {
+                } else if (tablee.getNumberofchairs() > i) {
                     s.add(tablee);
                     reservation.setTablees(s);
                     reservation.setGuest(guestRepository.save(reservation.getGuest()));
@@ -113,7 +112,7 @@ return false;
                     break;
                 } else {
                     s.add(tablee);
-                    i = i - tablee.getNumberOfChairs();
+                    i = i - tablee.getNumberofchairs();
                     continue;
 
                 }
@@ -143,17 +142,17 @@ return false;
 
         if (0 < tablees.size()) {
             for (Tablee tablee : tablees) {
-                if (tablee.getNumberOfChairs() == i) {
+                if (tablee.getNumberofchairs() == i) {
                     s.add(tablee);
                     return  s;
 
-                } else if (tablee.getNumberOfChairs() > i) {
+                } else if (tablee.getNumberofchairs() > i) {
                     s.add(tablee);
                    return s;
 
                 } else {
                     s.add(tablee);
-                    i = i - tablee.getNumberOfChairs();
+                    i = i - tablee.getNumberofchairs();
                     continue;
 
                 }

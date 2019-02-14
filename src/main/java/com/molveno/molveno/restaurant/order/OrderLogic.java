@@ -16,7 +16,7 @@ public class OrderLogic {
      * @param order
      * @return
      */
-    public static double calculateTotalprice(Order order) {
+    public  static double calculateTotalprice(Order order) {
 
         double total = 0;
 
