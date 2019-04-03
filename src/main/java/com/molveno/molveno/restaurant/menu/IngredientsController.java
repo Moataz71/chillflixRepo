@@ -61,6 +61,8 @@ public class IngredientsController {
             g.setPriceIngredients(ingredient.getPriceIngredients());
         }
 
+        g.setIngredientQuantityType(ingredient.getIngredientQuantityType());
+
         ingredientRepository.save(g);
 
 
